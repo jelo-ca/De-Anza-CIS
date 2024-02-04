@@ -23,12 +23,12 @@ public:
 	~Cargo();
 
 	//Mutators
-	void setuld(string);
-	void setabbr(string);
-	void setuldid(string);
-	void setair(int);
-	void setwt(double);
-	void setdest(string);
+	void setuld();
+	void setabbr();
+	void setuldid();
+	void setair();
+	void setwt();
+	void setdest();
 
 	//Accessors
 	string getuld() const;
@@ -38,8 +38,8 @@ public:
 	double getwt() const;
 	string getdest() const;
 
-	void AssignCargo(Cargo &);
-	void DeclareCargo(Cargo &);
+	void AssignCargo(Cargo&);
+	void DeclareCargo(Cargo&);
 };
 
 Cargo::Cargo() {}
@@ -59,28 +59,34 @@ Cargo::~Cargo() {
 }
 
 //MUTATORS
-void Cargo::setuld(string uld) {
-	this->uld = uld;
+void Cargo::setuld() {
+	cout << "Please input Unit Type: ";
+	cin >> this->uld;
 }
 
-void Cargo::setabbr(string abbr) {
-	this->abbr = abbr;
+void Cargo::setabbr() {
+	cout << "Unit Abbreviation: ";
+	cin >> this->abbr;
 }
 
-void Cargo::setuldid(string uldid) {
-	this->uldid = uldid;
+void Cargo::setuldid() {
+	cout << "Unit ID: ";
+	cin >> this->uldid;
 }
 
-void Cargo::setair(int air) {
-	this->air = air;
+void Cargo::setair() {
+	cout << "Aircraft: ";
+	cin >> this->air;
 }
 
-void Cargo::setwt(double wt) {
-	this->wt = wt;
+void Cargo::setwt() {
+	cout << "Weight: ";
+	cin >> this->wt;
 }
 
-void Cargo::setdest(string dest) {
-	this->dest = dest;
+void Cargo::setdest() {
+	cout << "Destination: ";
+	cin >> this->dest;
 }
 
 //ACCESSORS
@@ -108,16 +114,16 @@ string Cargo::getdest() const {
 	return dest;
 }
 
-void Cargo::AssignCargo(Cargo &cargo) {
-	cargo.setuld("Container");
-	cargo.setabbr("AYF");
-	cargo.setuld("AYF97326IB");
-	cargo.setair(737);
-	cargo.setwt(1710);
-	cargo.setdest("SMF");
+void Cargo::AssignCargo(Cargo& cargo) {
+	cargo.setuld();
+	cargo.setabbr();
+	cargo.setuldid();
+	cargo.setair();
+	cargo.setwt();
+	cargo.setdest();
 }
 
-void Cargo::DeclareCargo(Cargo &cargo) {
+void Cargo::DeclareCargo(Cargo& cargo) {
 	cout << "------------------------------------------------" <<
 		"\nUnit Type: " << cargo.getuld() <<
 		"\nAbbreviation: " << cargo.getabbr() <<
@@ -129,11 +135,11 @@ void Cargo::DeclareCargo(Cargo &cargo) {
 
 int main() {
 
-	Cargo *sampleCargo = new Cargo(); //Create Cargo obj w default constructor
+	Cargo* sampleCargo = new Cargo(); //Create Cargo obj w default constructor
 	sampleCargo->DeclareCargo(*sampleCargo); //Output Default Constructor
 	delete sampleCargo;
 
-	Cargo *load = new Cargo(); //Create Cargo obj w default constructor
+	Cargo* load = new Cargo(); //Create Cargo obj w default constructor
 	load->AssignCargo(*load); //Use mutators to input data
 	load->DeclareCargo(*load); //Output new contents of obj
 	delete load;
