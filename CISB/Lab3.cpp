@@ -40,9 +40,6 @@ public:
 
 	//Kilo to pound function
 	friend double kilotopound(double kilograms);
-
-	void AssignCargo(Cargo&);
-	void DeclareCargo(Cargo&);
 };
 
 //kg to lb function
@@ -130,7 +127,7 @@ string Cargo::getdest() const {
 	return dest;
 }
 
-void Cargo::AssignCargo(Cargo& cargo) {
+void AssignCargo(Cargo& cargo) {
 	cargo.setuld();
 	cargo.setabbr();
 	cargo.setuldid();
@@ -139,7 +136,7 @@ void Cargo::AssignCargo(Cargo& cargo) {
 	cargo.setdest();
 }
 
-void Cargo::DeclareCargo(Cargo& cargo) {
+void DeclareCargo(Cargo& cargo) {
 	cout << "------------------------------------------------" <<
 		"\nUnit Type: " << cargo.getuld() <<
 		"\nAbbreviation: " << cargo.getabbr() <<
@@ -153,17 +150,17 @@ void Cargo::DeclareCargo(Cargo& cargo) {
 int main() {
 
 	Cargo* sampleCargo = new Cargo(); //Create Cargo obj w default constructor
-	sampleCargo->DeclareCargo(*sampleCargo); //Output Default Constructor
+	DeclareCargo(*sampleCargo); //Output Default Constructor
 
 
 	Cargo* load = new Cargo(); //Create Cargo obj w default constructor
-	load->AssignCargo(*load); //Use mutators to input data
+	AssignCargo(*load); //Use mutators to input data
 
 	Cargo* copyLoad = load; //Creates COPY
 
 
-	load->DeclareCargo(*load); //Output new contents of obj
-	load->DeclareCargo(*copyLoad); //Outputs COPY
+	DeclareCargo(*load); //Output new contents of obj
+	DeclareCargo(*copyLoad); //Outputs COPY
 
 	delete sampleCargo;
 	delete load;
